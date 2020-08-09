@@ -378,6 +378,28 @@ static void from_json(const json& j, Config::Visuals::ColorCorrection& c)
     read(j, "Yellow", c.yellow);
 }
 
+static void from_json(const json& j, Config::Visuals::ViewmodelXYZ& vxyz)
+{
+    read(j, "Enabled", vxyz.enabled);
+    read(j, "Menu Type", vxyz.menuType);
+    read(j, "cl_right Guns", vxyz.clright_guns);
+    read(j, "X Guns", vxyz.x_guns);
+    read(j, "Y Guns", vxyz.y_guns);
+    read(j, "Z Guns", vxyz.z_guns);
+    read(j, "cl_right Knife", vxyz.clright_knife);
+    read(j, "X Knife", vxyz.x_knife);
+    read(j, "Y Knife", vxyz.y_knife);
+    read(j, "Z Knife", vxyz.z_knife);
+    read(j, "cl_right Grenades", vxyz.clright_grenades);
+    read(j, "X Grenades", vxyz.x_grenades);
+    read(j, "Y Grenades", vxyz.y_grenades);
+    read(j, "Z Grenades", vxyz.z_grenades);
+    read(j, "cl_right Pistols", vxyz.clright_pistols);
+    read(j, "X Pistols", vxyz.x_pistols);
+    read(j, "Y Pistols", vxyz.y_pistols);
+    read(j, "Z Pistols", vxyz.z_pistols);
+}
+
 static void from_json(const json& j, Config::Visuals& v)
 {
     read(j, "Disable post-processing", v.disablePostProcessing);
@@ -417,6 +439,7 @@ static void from_json(const json& j, Config::Visuals& v)
     read(j, "Playermodel T", v.playerModelT);
     read(j, "Playermodel CT", v.playerModelCT);
     read<value_t::object>(j, "Color correction", v.colorCorrection);
+    read<value_t::object>(j, "ViewmodelXYZ", v.viewmodelXYZ);
 }
 
 static void from_json(const json& j, sticker_setting& s)
@@ -938,6 +961,28 @@ static void to_json(json& j, const Config::Visuals::ColorCorrection& o, const Co
     WRITE("Yellow", yellow);
 }
 
+static void to_json(json& j, const Config::Visuals::ViewmodelXYZ& o, const Config::Visuals::ViewmodelXYZ& dummy)
+{
+    WRITE("Enabled", enabled);
+    WRITE("Menu Type", menuType);
+    WRITE("cl_right Guns", clright_guns);
+    WRITE("X Guns", x_guns);
+    WRITE("Y Guns", y_guns);
+    WRITE("Z Guns", z_guns);
+    WRITE("cl_right Knife", clright_knife);
+    WRITE("X Knife", x_knife);
+    WRITE("Y Knife", y_knife);
+    WRITE("Z Knife", z_knife);
+    WRITE("cl_right Grenades", clright_grenades);
+    WRITE("X Grenades", x_grenades);
+    WRITE("Y Grenades", y_grenades);
+    WRITE("Z Grenades", z_grenades);
+    WRITE("cl_right Pistols", clright_pistols);
+    WRITE("X Pistols", x_pistols);
+    WRITE("Y Pistols", y_pistols);
+    WRITE("Z Pistols", z_pistols);
+}
+
 static void to_json(json& j, const Config::Visuals& o)
 {
     const Config::Visuals dummy;
@@ -979,6 +1024,7 @@ static void to_json(json& j, const Config::Visuals& o)
     WRITE("Playermodel T", playerModelT);
     WRITE("Playermodel CT", playerModelCT);
     WRITE("Color correction", colorCorrection);
+    WRITE("ViewmodelXYZ", viewmodelXYZ);
 }
 
 static void to_json(json& j, const ImVec4& o)
